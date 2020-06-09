@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextInput, Text } from 'react-native';
+import { Input } from '../components/common/Input';
 import { Button, Card, CardSection } from './common';
 
 class LoginForm extends Component {
@@ -14,18 +14,19 @@ class LoginForm extends Component {
         return(
             <Card>
                 <CardSection>
-                    <Text>Email</Text>
-                    <TextInput 
+                    <Input
+                    placeholder = {"user122@gmail.com"}
+                    label = {"Email"}
                     value = {this.state.email}
-                    style= {styles.inputStyle}
                     onChangeText = { email => this.setState({ email: email })} // we could also use just -> text
-                    ></TextInput>
+                    />
                 </CardSection>
                 <CardSection>
-                    <Text>Password</Text>
-                    <TextInput 
+                    <Input
+                    placeholder = {"minimum 8 characters"}
+                    label = {"Password"}
+                    secureTextEntry={true}
                     value = {this.state.password}
-                    style= {styles.inputStyle}
                     onChangeText = { password => this.setState({ password: password })} // we could also use just -> text
                     />
                 </CardSection>
@@ -36,13 +37,6 @@ class LoginForm extends Component {
         )
     }
 }
-const styles = {
-    inputStyle: {
-        borderWidth: 1,
-        flex:1,
-        width: null,
-        borderColor: 'lightgrey'
-    }
-}
+
 
 export default LoginForm;
