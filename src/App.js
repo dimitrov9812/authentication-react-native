@@ -7,7 +7,7 @@ import InsideApp from './components/InsideApp';
 import { Provider } from 'react-redux';
 import { createStore} from 'redux';
 import reducers from './reducers/index';
-
+import LibraryList from './components/common/LibraryList';
 
 class App extends Component {
     state = {
@@ -41,8 +41,11 @@ class App extends Component {
     renderContent() {
         if(this.state.loggedIn){
             return (
-                <InsideApp 
-                />
+                <View>
+                    <InsideApp 
+                    />
+                    <LibraryList />   
+                </View>
             )
         }
         else if(this.state.loggedIn === null){
