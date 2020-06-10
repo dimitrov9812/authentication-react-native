@@ -4,6 +4,10 @@ import firebase from 'firebase';
 import { Header, Spinner } from './components/common/index';
 import LoginForm from './components/LoginForm';
 import InsideApp from './components/InsideApp';
+import { Provider } from 'react-redux';
+import { createStore} from 'redux';
+import reducers from './reducers/index';
+
 
 class App extends Component {
     state = {
@@ -54,10 +58,12 @@ class App extends Component {
     }
     render(){
         return(
-            <View>
-                <Header headerText={'Log in'}/>
-                {this.renderContent()}
-            </View>
+            <Provider store = {createStore(reducers)}>
+                <View>
+                    <Header headerText={'Log in'}/>
+                    {this.renderContent()}
+                </View>
+            </Provider>
         )
     }
 }
