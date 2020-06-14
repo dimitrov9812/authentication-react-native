@@ -6,9 +6,7 @@ import { CardSection } from './CardSection';
 
 class LibraryList extends Component {
     renderItem(data) {
-        console.log(data.item.title)
-        console.log(data.item.description)
-        return <ListItem title = {data.item.title} description = {data.item.description} />
+        return <ListItem id = {data.item.id} title = {data.item.title} description = {data.item.description} />
     }
     render() {
         return(

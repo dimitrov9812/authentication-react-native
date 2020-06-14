@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import { createStore} from 'redux';
 import reducers from './reducers/index';
 import LibraryList from './components/common/LibraryList';
+import SubMenu from './components/SubMenu';
 
 class App extends Component {
     state = {
@@ -42,6 +43,7 @@ class App extends Component {
         if(this.state.loggedIn){
             return (
                 <View>
+                    <SubMenu />
                     <InsideApp 
                     />
                     <LibraryList />   
