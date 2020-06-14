@@ -1,10 +1,13 @@
 import { combineReducers } from 'redux';
 import libraryReducer from './libraryReducer';
-import testReducer from './testReducer';
 import selectionReducer from './selectionReducer';
+import albumReducer from './albumReducer';
+import menuReducer from './menuReducer';
 
 export default combineReducers(
     {
     libraries: libraryReducer,
-    selectLibrary: selectionReducer
+    selectLibrary: selectionReducer,
+    selectMenu: selectionReducer,
+    menus: menuReducer
     });

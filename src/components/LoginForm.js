@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Input } from '../components/common/Input';
-import { Button, Card, CardSection, Spinner } from './common';
-import { Text } from 'react-native';
+import { Button, Card, CardSection, Spinner, Header } from './common';
+import { Text, View } from 'react-native';
 import firebase from 'firebase';
 
 class LoginForm extends Component {
@@ -20,20 +20,20 @@ class LoginForm extends Component {
             loading: true
         })
 
-        firebase.auth().signInWithEmailAndPassword(email,password)
-        .then(() =>{
-            this.onLoginSuccess();
-        })
-        .catch(() => {
-             firebase.auth().createUserWithEmailAndPassword(email,password)
-             .then(() =>{
-                this.onRegisterSuccess();
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(() => {
+                this.onLoginSuccess();
             })
-             .catch(() => {
-                this.onLoginFail();
-             });
-        });
-        
+            .catch(() => {
+                firebase.auth().createUserWithEmailAndPassword(email, password)
+                    .then(() => {
+                        this.onRegisterSuccess();
+                    })
+                    .catch(() => {
+                        this.onLoginFail();
+                    });
+            });
+
         console.log("Logged in:");
     }
     onLoginSuccess() {
@@ -44,7 +44,7 @@ class LoginForm extends Component {
             password: '',
             error: '',
             message: 'Registered successfully',
-            loading:false
+            loading: false
         })
     }
     onLoginSuccess() {
@@ -55,59 +55,62 @@ class LoginForm extends Component {
             password: '',
             error: '',
             message: 'Logged in successfully',
-            loading:false
+            loading: false
         })
     }
     onLoginFail() {
         this.setState({
-            loading:false,
+            loading: false,
             error: 'Authentication failed'
         })
     }
     renderButton() {
-        if(this.state.loading){
+        if (this.state.loading) {
             return (
-            <Spinner
-            size = {"small"}
-            />
+                <Spinner
+                    size={"small"}
+                />
             );
         }
-        else{
-            return(
-                <Button onPress = {this.onPress}>Log in</Button>
+        else {
+            return (
+                <Button onPress={this.onPress}>Log in</Button>
             );
         }
     };
-    render(){
-        return(
-            <Card>
-                <CardSection>
-                    <Input
-                    placeholder = {"user122@gmail.com"}
-                    label = {"Email"}
-                    value = {this.state.email}
-                    onChangeText = { email => this.setState({ email: email })} // we could also use just -> text
-                    />
-                </CardSection>
-                <CardSection>
-                    <Input
-                    placeholder = {"minimum 8 characters"}
-                    label = {"Password"}
-                    secureTextEntry={true}
-                    value = {this.state.password}
-                    onChangeText = { password => this.setState({ password: password })} // we could also use just -> text
-                    />
-                </CardSection>
-                <Text style = {styles.error}>
-                    {
-                        <Text style = {styles.error}>{this.state.error}</Text>
-                         || 
-                        <Text style = {styles.messageText}>{this.state.message}</Text>}
-                </Text>
-                <CardSection>
-                    {this.renderButton()}
-                </CardSection>
-            </Card>
+    render() {
+        return (
+            <View>
+                <Header headerText={'Log in'} />
+                <Card>
+                    <CardSection>
+                        <Input
+                            placeholder={"user122@gmail.com"}
+                            label={"Email"}
+                            value={this.state.email}
+                            onChangeText={email => this.setState({ email: email })} // we could also use just -> text
+                        />
+                    </CardSection>
+                    <CardSection>
+                        <Input
+                            placeholder={"minimum 8 characters"}
+                            label={"Password"}
+                            secureTextEntry={true}
+                            value={this.state.password}
+                            onChangeText={password => this.setState({ password: password })} // we could also use just -> text
+                        />
+                    </CardSection>
+                    <Text style={styles.error}>
+                        {
+                            <Text style={styles.error}>{this.state.error}</Text>
+                            ||
+                            <Text style={styles.messageText}>{this.state.message}</Text>}
+                    </Text>
+                    <CardSection>
+                        {this.renderButton()}
+                    </CardSection>
+                </Card>
+            </View>
         )
     }
 }

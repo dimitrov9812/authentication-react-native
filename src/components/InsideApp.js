@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Input } from '../components/common/Input';
-import { Button, Card, CardSection, Spinner } from './common';
-import { Text,View } from 'react-native';
+import { Button, Header } from './common';
+import { Text, View } from 'react-native';
 import firebase from 'firebase';
 
 class InsideApp extends Component  {
@@ -12,6 +11,7 @@ class InsideApp extends Component  {
     render(){
         return(
             <View>
+                <Header headerText={'Applications'} />
                 <Button onPress = {this.onPress}>Log Out</Button>
             </View>
         )

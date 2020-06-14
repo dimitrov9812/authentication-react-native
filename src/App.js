@@ -9,6 +9,7 @@ import { createStore} from 'redux';
 import reducers from './reducers/index';
 import LibraryList from './components/common/LibraryList';
 import SubMenu from './components/SubMenu';
+import AlbumList from './components/AlbumList';
 
 class App extends Component {
     state = {
@@ -43,10 +44,9 @@ class App extends Component {
         if(this.state.loggedIn){
             return (
                 <View>
-                    <SubMenu />
-                    <InsideApp 
+                     <InsideApp 
                     />
-                    <LibraryList />   
+                    <SubMenu />
                 </View>
             )
         }
@@ -65,7 +65,6 @@ class App extends Component {
         return(
             <Provider store = {createStore(reducers)}>
                 <ScrollView style= {{flex:1}}>
-                    <Header headerText={'Log in'}/>
                     {this.renderContent()}
                 </ScrollView>
             </Provider>

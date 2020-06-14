@@ -1,16 +1,21 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import { CardSection } from './common';
-
+import AlbumList from './AlbumList';
+import LibraryList from '../components/common/LibraryList';
+import Home from '../components/Home';
+import { Router, Scene } from 'react-native-router-flux';
+import { Text } from 'react-native'; 
 const SubMenu = () => {
-    <View>
-        <CardSection>
-            Tech Stack App
-        </CardSection>
-        <CardSection>
-            Albums App
-        </CardSection>
-    </View>
+        return(
+            // <Router>
+            //     <Scene key = "root">
+            //         <Scene key = "home" component = {Home} title = "Home" initial = {true} />
+            //         <Scene key = "albums" component = {AlbumList} title = "Albums" initial = {true} />
+            //         <Scene key = "libraries" component = {LibraryList} title = "Libraries" />
+            //     </Scene>
+            // </Router>
+            <Text>Hello</Text>
+        );
 }
+
 
 export default SubMenu;

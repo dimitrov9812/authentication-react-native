@@ -4,3 +4,10 @@ export const selectLibrary = (libraryId) => {
         payload: libraryId
     }
 }
+
+export const selectMenu = (menuId) => {
+    return {
+        type: 'select_menu',
+        payload: menuId
+    }
+}
