@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { ScrollView, View, Text } from 'react-native';
 import firebase from 'firebase';
 import { Header, Spinner } from './components/common/index';
 import LoginForm from './components/LoginForm';
@@ -62,10 +62,10 @@ class App extends Component {
     render(){
         return(
             <Provider store = {createStore(reducers)}>
-                <View>
+                <ScrollView style= {{flex:1}}>
                     <Header headerText={'Log in'}/>
                     {this.renderContent()}
-                </View>
+                </ScrollView>
             </Provider>
         )
     }
