@@ -9,5 +9,6 @@ export default combineReducers(
     libraries: libraryReducer,
     selectLibrary: selectionReducer,
     selectMenu: selectionReducer,
+    albums: albumReducer,
     menus: menuReducer
     });

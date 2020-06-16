@@ -1,20 +1,50 @@
 import React from 'react';
+import { Button } from './common/Button';
+import { Text, View } from 'react-native'; 
 import AlbumList from './AlbumList';
-import LibraryList from '../components/common/LibraryList';
-import Home from '../components/Home';
-import { Router, Scene } from 'react-native-router-flux';
-import { Text } from 'react-native'; 
-const SubMenu = () => {
+import LibraryList from './common/LibraryList';
+
+class SubMenu extends React.Component{
+    state = {
+        render: ''
+    }
+    renderAlbums = () => {
+        this.setState({
+            render: 'albums'
+        });
+        console.log(this.state.render);
+    }
+    renderLibrary = () => {
+        this.setState({
+            render: 'libraries'
+        });
+        console.log(this.state.render);
+    }
+    renderData(){
+        const dataToRender = this.state.render;
+        console.log("Data"+dataToRender);
+        if(dataToRender === "albums"){
+            return(
+            <AlbumList />
+            )
+        }
+        else{
+            return(
+            <LibraryList />
+            )
+        }
+    }
+    render(){
         return(
-            // <Router>
-            //     <Scene key = "root">
-            //         <Scene key = "home" component = {Home} title = "Home" initial = {true} />
-            //         <Scene key = "albums" component = {AlbumList} title = "Albums" initial = {true} />
-            //         <Scene key = "libraries" component = {LibraryList} title = "Libraries" />
-            //     </Scene>
-            // </Router>
-            <Text>Hello</Text>
+            <View>
+                <Button onPress={this.renderAlbums}>Albums</Button>
+                <Button onPress={this.renderLibrary}>Libraries</Button>
+                <View>
+                    {this.renderData()}
+                </View>
+            </View>
         );
+    }
 }
 
 
